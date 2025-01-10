@@ -1,6 +1,6 @@
 //
 //  profile.swift
-//  network-profiles
+//  NetworkProfiles
 //
 //  Created by Nico Mattes on 09.01.25.
 //

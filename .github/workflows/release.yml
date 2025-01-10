@@ -1,0 +1,151 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
+        default: 'v1.0.0'
+      comment:
+        description: 'Release comment'
+        required: false
+        default: ''
+  release:
+    types:
+      - created
+
+jobs:
+  release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Git identity
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v2
+        with:
+          xcode-version: latest
+
+      - name: Build the App
+        run: |
+          xcodebuild clean archive \
+            -workspace NetworkProfiles.xcworkspace \
+            -scheme NetworkProfiles \
+            -archivePath build/NetworkProfiles.xcarchive
+
+      - name: Export the .app
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/NetworkProfiles.xcarchive \
+            -exportOptionsPlist ExportOptions.plist \
+            -exportPath build
+
+      - name: Install Signing Certificate
+        env:
+          CERTIFICATE: ${{ secrets.CERTIFICATE }}
+          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+        run: |
+          echo "$CERTIFICATE" | base64 --decode > signing_certificate.p12
+          security import signing_certificate.p12 -k ~/Library/Keychains/login.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+
+      - name: Code-sign the .app
+        run: |
+          codesign --deep --force --verify --sign "Developer ID Application: Your Name (TeamID)" build/NetworkProfiles.app
+
+      - name: Create a DMG
+        run: |
+          mkdir dmg
+          hdiutil create dmg/NetworkProfiles.dmg -volname "NetworkProfiles" -srcfolder build/NetworkProfiles.app -ov -format UDZO
+
+      - name: Notarize the DMG
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+        run: |
+          xcrun altool --notarize-app \
+            --primary-bundle-id com.yourcompany.NetworkProfiles \
+            --username "$APPLE_ID" \
+            --password "$APPLE_APP_SPECIFIC_PASSWORD" \
+            --file dmg/NetworkProfiles.dmg
+
+          # Wait for notarization to complete (optional step)
+          sleep 300  # Adjust based on notarization time
+
+          # Staple the notarization ticket to the DMG
+          xcrun stapler staple dmg/NetworkProfiles.dmg
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v3
+        with:
+          name: NetworkProfiles.dmg
+          path: dmg/NetworkProfiles.dmg
+
+      - name: Create tar.gz of source code
+        run: |
+          tar -czvf network-profiles-${{ github.event.inputs.tag }}.tar.gz build/NetworkProfiles.app
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          release_name: Release ${{ github.event.inputs.tag }}
+          body: ${{ github.event.inputs.comment }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./network-profiles-${{ github.event.inputs.tag }}.tar.gz
+          asset_name: network-profiles-${{ github.event.inputs.tag }}.tar.gz
+          asset_content_type: application/gzip
+
+  deploy-to-homebrew:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get latest tag version
+        id: latest_tag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+
+      - name: Get sha 256 of macOS version
+        id: shasum_mac_os
+        run: |
+          wget https://github.com/PanterSoft/network-profiles/releases/download/${{ steps.latest_tag.outputs.tag }}/network-profiles-${{ steps.latest_tag.outputs.tag }}.tar.gz &&
+          echo ::set-output name=sha::"$(shasum -a 256 ./network-profiles-${{ steps.latest_tag.outputs.tag }}.tar.gz | awk '{printf $1}')"
+
+      - name: Verify Homebrew Token
+        run: |
+          if [ -z "${{ secrets.BREW_TOKEN_TAP }}" ]; then
+            echo "BREW_TOKEN_TAP is not set"
+            exit 1
+          fi
+
+      - name: Update network-profiles homebrew formula
+        uses: naijabx/update-formula-homebrew-action@v1.1
+        with:
+          repo: PanterSoft/network-profiles
+          tap: PanterSoft/homebrew-pantersoft
+          formula: Formula/NetworkProfiles.rb
+          download-url: https://github.com/PanterSoft/network-profiles/releases/download/${{ steps.latest_tag.outputs.tag }}/network-profiles-${{ steps.latest_tag.outputs.tag }}.tar.gz
+          sha256: ${{ steps.shasum_mac_os.outputs.sha }}
+        env:
+          COMMIT_TOKEN: ${{ secrets.BREW_TOKEN_TAP }}

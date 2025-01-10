@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  NetworkProfiles
 //
-//  Created by Nico Mattes on 10.01.25.
+//  Created by Nico Mattes on 09.01.25.
 //
 
 import SwiftUI
@@ -10,50 +10,61 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var items: [Profile]
+    @State private var columnVisibility =
+    NavigationSplitViewVisibility.automatic
+    @State private var selectedProfile: Profile?
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            List(items, id: \.self, selection: $selectedProfile) { item in
+                Text(item.profile_name)
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            .navigationTitle("Profiles")
             .toolbar {
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+                ToolbarItem {
+                    Button(action: deleteSelectedProfile) {
+                        Label("Delete Item", systemImage: "trash")
+                    }
+                    .disabled(selectedProfile == nil)
+                }
             }
         } detail: {
-            Text("Select an item")
+            if let selectedProfile = selectedProfile {
+                DetailedProfileView(item: selectedProfile)
+            } else {
+                Text("No profile yet")
+                    .font(.title)
+                    .padding()
+            }
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+            let id = UUID()
+            let profile_name = "Test_\(id)"
+            let newProfile = Profile(profile_id: id, profile_name: profile_name, dhcp_mode: "dhcp", subnet_mask: "255.255.255.0", ipv4_adress: "192.168.0.238", ipv4_router: "192.168.0.1", gateway: "192.168.0.254", dns: "8.8.8.8")
+            modelContext.insert(newProfile)
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+    private func deleteSelectedProfile() {
+        if let profile = selectedProfile {
+            selectedProfile = items.first
+            modelContext.delete(profile)
+        } else {
+            selectedProfile = nil
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Profile.self, inMemory: true)
 }

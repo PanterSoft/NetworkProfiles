@@ -1,6 +1,6 @@
 //
 //  DetailedProfileView.swift
-//  network-profiles
+//  NetworkProfiles
 //
 //  Created by Nico Mattes on 10.01.25.
 //

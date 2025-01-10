@@ -1,0 +1,7 @@
+networksetup_command.md
+delete_core_data.sh
+.DS_Store
+network-profiles.xcodeproj/project.xcworkspace/*
+network-profiles.xcodeproj/xcuserdata/*
+.vscode/*
+.vscode/settings.json
