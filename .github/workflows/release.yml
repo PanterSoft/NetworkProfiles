@@ -35,53 +35,11 @@ jobs:
         with:
           xcode-version: latest
 
-      - name: Build the App
-        run: |
-          xcodebuild clean archive \
-            -workspace /Users/runner/work/NetworkProfiles/NetworkProfiles/NetworkProfiles.xcworkspace \
-            -scheme NetworkProfiles \
-            -archivePath build/NetworkProfiles.xcarchive
-
-      - name: Export the .app
-        run: |
-          xcodebuild -exportArchive \
-            -archivePath build/NetworkProfiles.xcarchive \
-            -exportOptionsPlist ExportOptions.plist \
-            -exportPath build
-
-      - name: Install Signing Certificate
-        env:
-          CERTIFICATE: ${{ secrets.CERTIFICATE }}
-          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
-        run: |
-          echo "$CERTIFICATE" | base64 --decode > signing_certificate.p12
-          security import signing_certificate.p12 -k ~/Library/Keychains/login.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-
-      - name: Code-sign the .app
-        run: |
-          codesign --deep --force --verify --sign "Developer ID Application: Your Name (TeamID)" build/NetworkProfiles.app
-
-      - name: Create a DMG
-        run: |
-          mkdir dmg
-          hdiutil create dmg/NetworkProfiles.dmg -volname "NetworkProfiles" -srcfolder build/NetworkProfiles.app -ov -format UDZO
-
-      - name: Notarize the DMG
-        env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
-        run: |
-          xcrun altool --notarize-app \
-            --primary-bundle-id com.yourcompany.NetworkProfiles \
-            --username "$APPLE_ID" \
-            --password "$APPLE_APP_SPECIFIC_PASSWORD" \
-            --file dmg/NetworkProfiles.dmg
-
-          # Wait for notarization to complete (optional step)
-          sleep 300  # Adjust based on notarization time
-
-          # Staple the notarization ticket to the DMG
-          xcrun stapler staple dmg/NetworkProfiles.dmg
+      - name: Create DMG file
+        uses: L-Super/create-dmg-actions@v1.0.3
+        with:
+          dmg_name: 'NetworkProfilesInstaller'
+          src_dir: 'DerivedData/NetworkProfiles/Build/Intermediates.noindex/ArchiveIntermediates/NetworkProfiles/BuildProductsPath/Release/NetworkProfiles.app'
 
       - name: Upload DMG
         uses: actions/upload-artifact@v3
