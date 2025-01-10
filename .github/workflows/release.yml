@@ -38,7 +38,7 @@ jobs:
       - name: Build the App
         run: |
           xcodebuild clean archive \
-            -workspace NetworkProfiles.xcworkspace \
+            -workspace /Users/runner/work/NetworkProfiles/NetworkProfiles/NetworkProfiles.xcworkspace \
             -scheme NetworkProfiles \
             -archivePath build/NetworkProfiles.xcarchive
 
