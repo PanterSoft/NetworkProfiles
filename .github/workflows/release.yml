@@ -91,7 +91,7 @@ jobs:
 
       - name: Create tar.gz of source code
         run: |
-          tar -czvf network-profiles-${{ github.event.inputs.tag }}.tar.gz build/NetworkProfiles.app
+          tar -czvf NetworkProfiles-${{ github.event.inputs.tag }}.tar.gz build/NetworkProfiles.app
 
       - name: Create GitHub Release
         id: create_release
@@ -111,8 +111,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./network-profiles-${{ github.event.inputs.tag }}.tar.gz
-          asset_name: network-profiles-${{ github.event.inputs.tag }}.tar.gz
+          asset_path: ./NetworkProfiles-${{ github.event.inputs.tag }}.tar.gz
+          asset_name: NetworkProfiles-${{ github.event.inputs.tag }}.tar.gz
           asset_content_type: application/gzip
 
   deploy-to-homebrew:
@@ -129,8 +129,8 @@ jobs:
       - name: Get sha 256 of macOS version
         id: shasum_mac_os
         run: |
-          wget https://github.com/PanterSoft/network-profiles/releases/download/${{ steps.latest_tag.outputs.tag }}/network-profiles-${{ steps.latest_tag.outputs.tag }}.tar.gz &&
-          echo ::set-output name=sha::"$(shasum -a 256 ./network-profiles-${{ steps.latest_tag.outputs.tag }}.tar.gz | awk '{printf $1}')"
+          wget https://github.com/PanterSoft/NetworkProfiles/releases/download/${{ steps.latest_tag.outputs.tag }}/NetworkProfiles-${{ steps.latest_tag.outputs.tag }}.tar.gz &&
+          echo ::set-output name=sha::"$(shasum -a 256 ./NetworkProfiles-${{ steps.latest_tag.outputs.tag }}.tar.gz | awk '{printf $1}')"
 
       - name: Verify Homebrew Token
         run: |
@@ -139,13 +139,13 @@ jobs:
             exit 1
           fi
 
-      - name: Update network-profiles homebrew formula
+      - name: Update NetworkProfiles homebrew formula
         uses: naijabx/update-formula-homebrew-action@v1.1
         with:
-          repo: PanterSoft/network-profiles
+          repo: PanterSoft/NetworkProfiles
           tap: PanterSoft/homebrew-pantersoft
           formula: Formula/NetworkProfiles.rb
-          download-url: https://github.com/PanterSoft/network-profiles/releases/download/${{ steps.latest_tag.outputs.tag }}/network-profiles-${{ steps.latest_tag.outputs.tag }}.tar.gz
+          download-url: https://github.com/PanterSoft/NetworkProfiles/releases/download/${{ steps.latest_tag.outputs.tag }}/NetworkProfiles-${{ steps.latest_tag.outputs.tag }}.tar.gz
           sha256: ${{ steps.shasum_mac_os.outputs.sha }}
         env:
           COMMIT_TOKEN: ${{ secrets.BREW_TOKEN_TAP }}

@@ -16,18 +16,18 @@ Network Profiles is a SwiftUI application that allows users to create network pr
     ```
 2. Install the application:
     ```sh
-    brew install network-profiles
+    brew install NetworkProfiles
     ```
 
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/PanterSoft/network-profiles.git
+    git clone https://github.com/PanterSoft/NetworkProfiles.git
     ```
 2. Open the project in Xcode:
     ```sh
-    cd network-profiles
-    open network-profiles.xcodeproj
+    cd NetworkProfiles
+    open NetworkProfiles.xcodeproj
     ```
 3. Run the project in Xcode.
 
