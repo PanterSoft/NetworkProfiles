@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		D9DC6E862D3669E400E545D0 /* NetworkProfilesMenueBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkProfilesMenueBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9DC6EF32D36771200E545D0 /* NetworkProfilesMenueBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkProfilesMenueBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D9DC6E882D3669E400E545D0 /* NetworkProfilesMenueBar */ = {
+		D9DC6EF52D36771200E545D0 /* NetworkProfilesMenueBar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NetworkProfilesMenueBar;
 			sourceTree = "<group>";
@@ -19,7 +19,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D9DC6E832D3669E400E545D0 /* Frameworks */ = {
+		D9DC6EF02D36771200E545D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D9DC6E7D2D3669E400E545D0 = {
+		D9DC6EEA2D36771200E545D0 = {
 			isa = PBXGroup;
 			children = (
-				D9DC6E882D3669E400E545D0 /* NetworkProfilesMenueBar */,
-				D9DC6E872D3669E400E545D0 /* Products */,
+				D9DC6EF52D36771200E545D0 /* NetworkProfilesMenueBar */,
+				D9DC6EF42D36771200E545D0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D9DC6E872D3669E400E545D0 /* Products */ = {
+		D9DC6EF42D36771200E545D0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9DC6E862D3669E400E545D0 /* NetworkProfilesMenueBar.app */,
+				D9DC6EF32D36771200E545D0 /* NetworkProfilesMenueBar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,66 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9DC6E852D3669E400E545D0 /* NetworkProfilesMenueBar */ = {
+		D9DC6EF22D36771200E545D0 /* NetworkProfilesMenueBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9DC6E972D3669E500E545D0 /* Build configuration list for PBXNativeTarget "NetworkProfilesMenueBar" */;
+			buildConfigurationList = D9DC6F042D36771300E545D0 /* Build configuration list for PBXNativeTarget "NetworkProfilesMenueBar" */;
 			buildPhases = (
-				D9DC6E822D3669E400E545D0 /* Sources */,
-				D9DC6E832D3669E400E545D0 /* Frameworks */,
-				D9DC6E842D3669E400E545D0 /* Resources */,
+				D9DC6EEF2D36771200E545D0 /* Sources */,
+				D9DC6EF02D36771200E545D0 /* Frameworks */,
+				D9DC6EF12D36771200E545D0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D9DC6E882D3669E400E545D0 /* NetworkProfilesMenueBar */,
+				D9DC6EF52D36771200E545D0 /* NetworkProfilesMenueBar */,
 			);
 			name = NetworkProfilesMenueBar;
 			packageProductDependencies = (
 			);
 			productName = NetworkProfilesMenueBar;
-			productReference = D9DC6E862D3669E400E545D0 /* NetworkProfilesMenueBar.app */;
+			productReference = D9DC6EF32D36771200E545D0 /* NetworkProfilesMenueBar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D9DC6E7E2D3669E400E545D0 /* Project object */ = {
+		D9DC6EEB2D36771200E545D0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					D9DC6E852D3669E400E545D0 = {
+					D9DC6EF22D36771200E545D0 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = D9DC6E812D3669E400E545D0 /* Build configuration list for PBXProject "NetworkProfilesMenueBar" */;
+			buildConfigurationList = D9DC6EEE2D36771200E545D0 /* Build configuration list for PBXProject "NetworkProfilesMenueBar" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = D9DC6E7D2D3669E400E545D0;
+			mainGroup = D9DC6EEA2D36771200E545D0;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = D9DC6E872D3669E400E545D0 /* Products */;
+			productRefGroup = D9DC6EF42D36771200E545D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9DC6E852D3669E400E545D0 /* NetworkProfilesMenueBar */,
+				D9DC6EF22D36771200E545D0 /* NetworkProfilesMenueBar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D9DC6E842D3669E400E545D0 /* Resources */ = {
+		D9DC6EF12D36771200E545D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -117,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D9DC6E822D3669E400E545D0 /* Sources */ = {
+		D9DC6EEF2D36771200E545D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -127,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D9DC6E952D3669E500E545D0 /* Debug */ = {
+		D9DC6F022D36771300E545D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -190,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		D9DC6E962D3669E500E545D0 /* Release */ = {
+		D9DC6F032D36771300E545D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -245,7 +243,7 @@
 			};
 			name = Release;
 		};
-		D9DC6E982D3669E500E545D0 /* Debug */ = {
+		D9DC6F052D36771300E545D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -273,7 +271,7 @@
 			};
 			name = Debug;
 		};
-		D9DC6E992D3669E500E545D0 /* Release */ = {
+		D9DC6F062D36771300E545D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -304,25 +302,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9DC6E812D3669E400E545D0 /* Build configuration list for PBXProject "NetworkProfilesMenueBar" */ = {
+		D9DC6EEE2D36771200E545D0 /* Build configuration list for PBXProject "NetworkProfilesMenueBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9DC6E952D3669E500E545D0 /* Debug */,
-				D9DC6E962D3669E500E545D0 /* Release */,
+				D9DC6F022D36771300E545D0 /* Debug */,
+				D9DC6F032D36771300E545D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9DC6E972D3669E500E545D0 /* Build configuration list for PBXNativeTarget "NetworkProfilesMenueBar" */ = {
+		D9DC6F042D36771300E545D0 /* Build configuration list for PBXNativeTarget "NetworkProfilesMenueBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9DC6E982D3669E500E545D0 /* Debug */,
-				D9DC6E992D3669E500E545D0 /* Release */,
+				D9DC6F052D36771300E545D0 /* Debug */,
+				D9DC6F062D36771300E545D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D9DC6E7E2D3669E400E545D0 /* Project object */;
+	rootObject = D9DC6EEB2D36771200E545D0 /* Project object */;
 }
