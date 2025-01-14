@@ -37,13 +37,11 @@ The menubar application allows you to quickly access and manage your network pro
     ```
 4. Run the built application:
     ```sh
-    cd build/Release
-    open NetworkProfilesMenueBar.app
+    open Build/Products/Release/NetworkProfilesMenueBar.app
     ```
 5. You will see a network icon in the menubar.
 6. Click the icon to open the menu.
-7. Select "Open NetworkProfiles_cli" to launch the CLI application.
-8. Select "Quit" to exit the menubar application.
+7. Select "Quit" to exit the menubar application.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.

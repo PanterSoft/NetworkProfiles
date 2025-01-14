@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		D9DC6EAE2D366CDE00E545D0 /* NetworkProfiles_cli in Frameworks */ = {isa = PBXBuildFile; productRef = D9DC6EAD2D366CDE00E545D0 /* NetworkProfiles_cli */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		D9DC6E862D3669E400E545D0 /* NetworkProfilesMenueBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkProfilesMenueBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -27,7 +23,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9DC6EAE2D366CDE00E545D0 /* NetworkProfiles_cli in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +65,6 @@
 			);
 			name = NetworkProfilesMenueBar;
 			packageProductDependencies = (
-				D9DC6EAD2D366CDE00E545D0 /* NetworkProfiles_cli */,
 			);
 			productName = NetworkProfilesMenueBar;
 			productReference = D9DC6E862D3669E400E545D0 /* NetworkProfilesMenueBar.app */;
@@ -101,7 +95,6 @@
 			mainGroup = D9DC6E7D2D3669E400E545D0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				D9DC6EAC2D366CDE00E545D0 /* XCRemoteSwiftPackageReference "NetworkProfiles_cli" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D9DC6E872D3669E400E545D0 /* Products */;
@@ -330,25 +323,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D9DC6EAC2D366CDE00E545D0 /* XCRemoteSwiftPackageReference "NetworkProfiles_cli" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PanterSoft/NetworkProfiles_cli.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D9DC6EAD2D366CDE00E545D0 /* NetworkProfiles_cli */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D9DC6EAC2D366CDE00E545D0 /* XCRemoteSwiftPackageReference "NetworkProfiles_cli" */;
-			productName = NetworkProfiles_cli;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9DC6E7E2D3669E400E545D0 /* Project object */;
 }

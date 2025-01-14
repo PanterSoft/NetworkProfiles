@@ -5,3 +5,5 @@ network-profiles.xcodeproj/project.xcworkspace/*
 network-profiles.xcodeproj/xcuserdata/*
 .vscode/*
 .vscode/settings.json
+NetworkProfilesMenueBar/Build/*
+NetworkProfilesMenueBar/DerivedData/*

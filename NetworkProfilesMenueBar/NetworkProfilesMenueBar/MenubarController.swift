@@ -1,5 +1,4 @@
 import Cocoa
-import NetworkHelper
 
 class MenubarController {
     static let shared = MenubarController()
@@ -29,8 +28,6 @@ class MenubarController {
             menuItem.representedObject = profile
             menu.addItem(menuItem)
         }
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Settings", action: #selector(openSettings), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "Q"))
         statusItem?.menu = menu
