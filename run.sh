@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navigate to the directory containing the built application
-cd "$(dirname "$0")/NetworkProfilesMenueBar/build/Release"
+cd "$(dirname "$0")/NetworkProfilesMenueBar/Build/Products/Debug"
 
 # Run the built application
 open NetworkProfilesMenueBar.app

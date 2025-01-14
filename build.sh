@@ -7,7 +7,7 @@ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 cd "$(dirname "$0")/NetworkProfilesMenueBar"
 
 # Build the menubar application
-xcodebuild -scheme NetworkProfilesMenueBar -configuration Release
+xcodebuild -scheme NetworkProfilesMenueBar -configuration Debug
 
 # Run the built application
-open ./build/Release/NetworkProfilesMenueBar.app
+open ./NetworkProfilesMenueBar/Build/Products/Debug/NetworkProfilesMenueBar.app
