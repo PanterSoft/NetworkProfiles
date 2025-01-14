@@ -19,17 +19,31 @@ Network Profiles is a SwiftUI application that allows users to create network pr
     brew install network-profiles
     ```
 
-## Installation
-1. Clone the repository:
+## Menubar Application
+The menubar application allows you to quickly access and manage your network profiles from the macOS menubar.
+
+### How to Use
+1. Set the active developer directory to the Xcode application:
     ```sh
-    git clone https://github.com/PanterSoft/network-profiles.git
+    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     ```
-2. Open the project in Xcode:
+2. Navigate to the directory containing the Xcode project:
     ```sh
-    cd network-profiles
-    open network-profiles.xcodeproj
+    cd NetworkProfilesMenueBar
     ```
-3. Run the project in Xcode.
+3. Build the menubar application:
+    ```sh
+    xcodebuild -scheme NetworkProfilesMenueBar -configuration Release
+    ```
+4. Run the built application:
+    ```sh
+    cd build/Release
+    open NetworkProfilesMenueBar.app
+    ```
+5. You will see a network icon in the menubar.
+6. Click the icon to open the menu.
+7. Select "Open NetworkProfiles_cli" to launch the CLI application.
+8. Select "Quit" to exit the menubar application.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.

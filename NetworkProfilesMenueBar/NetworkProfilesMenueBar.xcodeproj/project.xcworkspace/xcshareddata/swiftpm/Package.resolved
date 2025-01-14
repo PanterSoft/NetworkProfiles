@@ -1,0 +1,15 @@
+{
+  "originHash" : "58487d842ba9e53989e3bcf732a162cd7cd5f1ddeeb92fd1e50742b017f2039a",
+  "pins" : [
+    {
+      "identity" : "networkprofiles_cli",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PanterSoft/NetworkProfiles_cli.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "67ad4b18fcbccac5a21e6f0e5cd5362b195fe575"
+      }
+    }
+  ],
+  "version" : 3
+}
