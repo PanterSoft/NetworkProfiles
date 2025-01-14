@@ -10,4 +10,4 @@ cd "$(dirname "$0")/NetworkProfilesMenueBar"
 xcodebuild -scheme NetworkProfilesMenueBar -configuration Debug
 
 # Run the built application
-open ./NetworkProfilesMenueBar/Build/Products/Debug/NetworkProfilesMenueBar.app
+open ./Build/Products/Debug/NetworkProfilesMenueBar.app
