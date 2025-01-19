@@ -72,7 +72,7 @@ jobs:
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
         run: |
           xcrun altool --notarize-app \
-            --primary-bundle-id com.yourcompany.NetworkProfiles \
+            --primary-bundle-id com.PanterSoft.NetworkProfiles \
             --username "$APPLE_ID" \
             --password "$APPLE_APP_SPECIFIC_PASSWORD" \
             --file dmg/NetworkProfiles.dmg

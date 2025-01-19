@@ -1,6 +1,7 @@
 import Foundation
 import SwiftData
 import AppKit
+import ServiceManagement
 
 struct NetworkProfile: Codable {
     let profileName: String
@@ -95,13 +96,18 @@ class SwiftDataHelper {
             }
         }
 
+        try executeCommandsWithPrivileges(commands)
+    }
+
+    static func executeCommandsWithPrivileges(_ commands: [String]) throws {
+        let helperToolPath = "/Library/PrivilegedHelperTools/com.PanterSoft.networkprofiles.helper"
         for command in commands {
             let task = Process()
-            task.launchPath = "/bin/bash"
-            task.arguments = ["-c", command]
+            task.launchPath = helperToolPath
+            task.arguments = [command]
             let pipe = Pipe()
             task.standardError = pipe
-            task.standardOutput = pipe // Protokolliere auch die Standardausgabe
+            task.standardOutput = pipe
             task.launch()
             task.waitUntilExit()
             let outputData = pipe.fileHandleForReading.readDataToEndOfFile()
@@ -112,6 +118,16 @@ class SwiftDataHelper {
         }
     }
 
+    static func blessHelperTool() {
+        let service = SMAppService.mainApp
+        do {
+            try service.register()
+            print("Helper tool blessed successfully.")
+        } catch {
+            showErrorPopup(message: "Failed to bless helper tool: \(error.localizedDescription)")
+        }
+    }
+
     static func showErrorPopup(message: String) {
         let alert = NSAlert()
         alert.messageText = "Error"
@@ -119,5 +135,6 @@ class SwiftDataHelper {
         alert.alertStyle = .warning
         alert.addButton(withTitle: "OK")
         alert.runModal()
+        print(message)
     }
 }

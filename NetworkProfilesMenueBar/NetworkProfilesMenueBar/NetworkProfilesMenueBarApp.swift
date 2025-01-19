@@ -28,6 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Load SwiftData model
         loadSwiftDataModel()
 
+        // Bless the helper tool
+        SwiftDataHelper.blessHelperTool()
+
         // Set up the menu bar item
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
