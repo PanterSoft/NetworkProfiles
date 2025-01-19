@@ -81,7 +81,7 @@ class SwiftDataHelper {
             }
             let dnsServers = profile.dnsServers?.joined(separator: " ") ?? ""
             commands.append("networksetup -setmanual \(profile.interfaceName) \(ipv4Address) \(subnetMask) \(router)")
-            if !dnsServers.isEmpty {
+            if (!dnsServers.isEmpty) {
                 commands.append("networksetup -setdnsservers \(profile.interfaceName) \(dnsServers)")
             } else {
                 commands.append("networksetup -setdnsservers \(profile.interfaceName) empty")
@@ -108,7 +108,11 @@ class SwiftDataHelper {
             let pipe = Pipe()
             task.standardError = pipe
             task.standardOutput = pipe
-            task.launch()
+            do {
+                try task.run()
+            } catch {
+                throw NSError(domain: "NetworkSetupError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to launch command: \(error.localizedDescription)"])
+            }
             task.waitUntilExit()
             let outputData = pipe.fileHandleForReading.readDataToEndOfFile()
             let output = String(data: outputData, encoding: .utf8) ?? "Unknown output"

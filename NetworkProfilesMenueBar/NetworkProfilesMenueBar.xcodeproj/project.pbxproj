@@ -6,11 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D912ADC82D3DB56800EB7316 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D912ADCA2D3DB56800EB7316 /* NetworkProfilesHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NetworkProfilesHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9DC6EF32D36771200E545D0 /* NetworkProfilesMenueBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkProfilesMenueBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D912ADCB2D3DB56800EB7316 /* NetworkProfilesHelper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NetworkProfilesHelper;
+			sourceTree = "<group>";
+		};
 		D9DC6EF52D36771200E545D0 /* NetworkProfilesMenueBar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NetworkProfilesMenueBar;
@@ -19,6 +37,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D912ADC72D3DB56800EB7316 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9DC6EF02D36771200E545D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				D9DC6EF52D36771200E545D0 /* NetworkProfilesMenueBar */,
+				D912ADCB2D3DB56800EB7316 /* NetworkProfilesHelper */,
 				D9DC6EF42D36771200E545D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				D9DC6EF32D36771200E545D0 /* NetworkProfilesMenueBar.app */,
+				D912ADCA2D3DB56800EB7316 /* NetworkProfilesHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +75,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D912ADC92D3DB56800EB7316 /* NetworkProfilesHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D912ADD02D3DB56800EB7316 /* Build configuration list for PBXNativeTarget "NetworkProfilesHelper" */;
+			buildPhases = (
+				D912ADC62D3DB56800EB7316 /* Sources */,
+				D912ADC72D3DB56800EB7316 /* Frameworks */,
+				D912ADC82D3DB56800EB7316 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D912ADCB2D3DB56800EB7316 /* NetworkProfilesHelper */,
+			);
+			name = NetworkProfilesHelper;
+			packageProductDependencies = (
+			);
+			productName = NetworkProfilesHelper;
+			productReference = D912ADCA2D3DB56800EB7316 /* NetworkProfilesHelper */;
+			productType = "com.apple.product-type.tool";
+		};
 		D9DC6EF22D36771200E545D0 /* NetworkProfilesMenueBar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9DC6F042D36771300E545D0 /* Build configuration list for PBXNativeTarget "NetworkProfilesMenueBar" */;
@@ -80,6 +129,9 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					D912ADC92D3DB56800EB7316 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					D9DC6EF22D36771200E545D0 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -100,6 +152,7 @@
 			projectRoot = "";
 			targets = (
 				D9DC6EF22D36771200E545D0 /* NetworkProfilesMenueBar */,
+				D912ADC92D3DB56800EB7316 /* NetworkProfilesHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -115,6 +168,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D912ADC62D3DB56800EB7316 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9DC6EEF2D36771200E545D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +185,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		D912ADCE2D3DB56800EB7316 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C4F7T8DA9W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D912ADCF2D3DB56800EB7316 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C4F7T8DA9W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		D9DC6F022D36771300E545D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -306,6 +388,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D912ADD02D3DB56800EB7316 /* Build configuration list for PBXNativeTarget "NetworkProfilesHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D912ADCE2D3DB56800EB7316 /* Debug */,
+				D912ADCF2D3DB56800EB7316 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D9DC6EEE2D36771200E545D0 /* Build configuration list for PBXProject "NetworkProfilesMenueBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
